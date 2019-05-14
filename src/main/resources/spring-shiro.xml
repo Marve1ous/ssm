@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 配置重写的role过滤器 -->
+    <bean id="anyRoles" class="cn.marve1ous.service.Impl.shiro.MyRolesAuthorizationFilter"/>
+
+    <!-- 配置重写的permission过滤器 -->
+    <bean id="anyPerms" class="cn.marve1ous.service.Impl.shiro.MyPermissionsAuthorizationFilter"/>
+
+    <!-- 配置过滤链 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- 权限管理器 -->
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 登录地址 -->
+        <property name="loginUrl" value="/index.html"/>
+        <!-- 登录后跳转到业务页面 -->
+        <!-- <property name="successUrl" value="/ok.html"/> -->
+        <!-- 错误页面 -->
+        <property name="unauthorizedUrl" value="/user/unauth"/>
+        <!-- 权限配置 -->
+        <property name="filterChainDefinitions">
+            <value>
+                /index.html = anon
+                /user/login = anon
+                /user/unauthorized = anon
+                /user/logout = authc
+                /user/unauth = anon
+
+                <!-- 权限 -->
+                /user/get* = anyPerms[sel]
+                /user/all = anyPerms[mod]
+                <!-- 角色 -->
+                /user/** = anyRoles[admin]
+
+            </value>
+        </property>
+    </bean>
+
+    <!-- 配置securityManager -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myRealm"/>
+    </bean>
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <!-- 配置realm -->
+    <bean id="myRealm" class="cn.marve1ous.service.Impl.shiro.SystemAuthorizingRealm"/>
+
+    <!-- 开启shiro注解 -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor"/>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+</beans>
