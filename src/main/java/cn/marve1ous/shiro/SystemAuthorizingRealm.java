@@ -1,4 +1,4 @@
-package cn.marve1ous.service.Impl.shiro;
+package cn.marve1ous.shiro;
 
 import cn.marve1ous.service.UserService;
 import org.apache.shiro.authc.AuthenticationException;

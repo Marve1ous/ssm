@@ -1,4 +1,4 @@
-package cn.marve1ous.service.Impl.shiro;
+package cn.marve1ous.shiro;
 
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.CollectionUtils;

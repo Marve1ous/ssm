@@ -8,17 +8,24 @@ import org.apache.shiro.authc.*;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
-    @Autowired
     private UserService userService;
     private static Logger logger = Logger.getLogger(User.class);
+
+    //使用构造器注入
+    @Autowired
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
@@ -105,5 +112,11 @@ public class UserController {
         HashMap<String, String> hashMap = new HashMap<>();
         hashMap.put("msg", msg);
         return hashMap;
+    }
+
+    @RequestMapping("testModel")
+    public Model testModel(Model model) {
+        model.addAttribute(new User("123",123,"123","123"));
+        return model;
     }
 }

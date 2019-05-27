@@ -1,4 +1,4 @@
-package cn.marve1ous.service.Impl.shiro;
+package cn.marve1ous.shiro;
 
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.CollectionUtils;
@@ -19,9 +19,8 @@ public class MyPermissionsAuthorizationFilter extends AuthorizationFilter {
         boolean isPermitted = false;
         if (perms != null && perms.length > 0) {
             Set<String> permSet = CollectionUtils.asSet(perms);
-            Iterator it = permSet.iterator();
-            while (it.hasNext())
-                if(subject.isPermitted((String)it.next()))
+            for (String s : permSet)
+                if (subject.isPermitted(s))
                     return true;
         }
         else

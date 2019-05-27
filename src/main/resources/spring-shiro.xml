@@ -4,10 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- 配置重写的role过滤器 -->
-    <bean id="anyRoles" class="cn.marve1ous.service.Impl.shiro.MyRolesAuthorizationFilter"/>
+    <bean id="anyRoles" class="cn.marve1ous.shiro.MyRolesAuthorizationFilter"/>
 
     <!-- 配置重写的permission过滤器 -->
-    <bean id="anyPerms" class="cn.marve1ous.service.Impl.shiro.MyPermissionsAuthorizationFilter"/>
+    <bean id="anyPerms" class="cn.marve1ous.shiro.MyPermissionsAuthorizationFilter"/>
 
     <!-- 配置过滤链 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -29,8 +29,8 @@
                 /user/unauth = anon
 
                 <!-- 权限 -->
-                /user/get* = anyPerms[sel]
-                /user/all = anyPerms[mod]
+                /user/get* = anyPerms[search]
+                /user/all = anyPerms[searchAll]
                 <!-- 角色 -->
                 /user/** = anyRoles[admin]
 
@@ -46,7 +46,7 @@
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 
     <!-- 配置realm -->
-    <bean id="myRealm" class="cn.marve1ous.service.Impl.shiro.SystemAuthorizingRealm"/>
+    <bean id="myRealm" class="cn.marve1ous.shiro.SystemAuthorizingRealm"/>
 
     <!-- 开启shiro注解 -->
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"

@@ -1,10 +1,26 @@
 package cn.marve1ous.model;
 
-public class User {
+import javax.validation.constraints.*;
+import java.io.Serializable;
+
+public class User implements Serializable {
+    @NotNull
+    @Size(min = 36, max = 36)
     private String uuid;
+    @Min(100001)
+    @Max(999999)
     private int id;
+    @Size(min = 4, max = 20)
     private String name;
+    @Size(min = 8, max = 16)
     private String pwd;
+
+    public User(String uuid, int id, String name, String pwd) {
+        this.uuid = uuid;
+        this.id = id;
+        this.name = name;
+        this.pwd = pwd;
+    }
 
     public String getUuid() {
         return uuid;

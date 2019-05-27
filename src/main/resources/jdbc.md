@@ -1,10 +1,13 @@
+# Database properties
+## jdbc.properties
+```
 jdbc.driver=com.mysql.jdbc.Driver
 #数据库地址
-jdbc.url=jdbc:mysql://123.206.176.85/ssm?useUnicode=true&characterEncoding=utf8&useSSL=false
+jdbc.url=jdbc:mysql://address/database?useUnicode=true&characterEncoding=utf8&useSSL=false
 #用户名
-jdbc.username=root
+jdbc.username=
 #密码
-jdbc.password=Leijunjie...123
+jdbc.password=
 #最大连接数
 c3p0.maxPoolSize=30
 #最小连接数
@@ -15,3 +18,5 @@ c3p0.autoCommitOnClose=false
 c3p0.checkoutTimeout=10000
 #当获取连接失败重试次数
 c3p0.acquireRetryAttempts=2
+```
+## redis
