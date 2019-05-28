@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="cn.marve1ous.dao.UserDao">
-    
+    <cache type="cn.marve1ous.util.LoggingRedisCache"/>
     <!--  ResultMap 用map接收 List<Map<Object,Object>>  -->
     <select id="selectById" parameterType="int" resultType="cn.marve1ous.model.User">
         SELECT *

@@ -61,6 +61,8 @@ public class UserController {
         } catch (UnknownAccountException e) {
             String log = "帐号不存在. There is no user with username of " + token.getPrincipal();
             logger.info(log);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return result;
     }
