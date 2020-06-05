@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.UserroleMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.Userrole">
+    <constructor>
+      <arg column="userid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="roleid" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="cn.marve1ous.model.Userrole">
+    insert into userrole (userid, roleid)
+    values (#{userid,jdbcType=CHAR}, #{roleid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.Userrole">
+    insert into userrole
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="roleid != null">
+        roleid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=CHAR},
+      </if>
+      <if test="roleid != null">
+        #{roleid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from userrole
+    where userid = #{userid,jdbcType=CHAR}
+  </delete>
+</mapper>

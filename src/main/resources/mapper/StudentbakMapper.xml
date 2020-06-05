@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.StudentbakMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.Studentbak">
+    <constructor>
+      <idArg column="stuid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stuname" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stusex" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stunation" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stucard" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stustatus" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    stuid, stuname, stusex, stunation, stucard, stustatus
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from studentbak
+    where stuid = #{stuid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from studentbak
+    where stuid = #{stuid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.marve1ous.model.Studentbak">
+    insert into studentbak (stuid, stuname, stusex, 
+      stunation, stucard, stustatus
+      )
+    values (#{stuid,jdbcType=CHAR}, #{stuname,jdbcType=CHAR}, #{stusex,jdbcType=INTEGER}, 
+      #{stunation,jdbcType=CHAR}, #{stucard,jdbcType=CHAR}, #{stustatus,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.Studentbak">
+    insert into studentbak
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuid != null">
+        stuid,
+      </if>
+      <if test="stuname != null">
+        stuname,
+      </if>
+      <if test="stusex != null">
+        stusex,
+      </if>
+      <if test="stunation != null">
+        stunation,
+      </if>
+      <if test="stucard != null">
+        stucard,
+      </if>
+      <if test="stustatus != null">
+        stustatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuid != null">
+        #{stuid,jdbcType=CHAR},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=CHAR},
+      </if>
+      <if test="stusex != null">
+        #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="stunation != null">
+        #{stunation,jdbcType=CHAR},
+      </if>
+      <if test="stucard != null">
+        #{stucard,jdbcType=CHAR},
+      </if>
+      <if test="stustatus != null">
+        #{stustatus,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateCard">
+    update studentbak
+    set stuid = #{newCard}, stucard = #{newCard}
+    where stuid = #{card}
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.marve1ous.model.Studentbak">
+    update studentbak
+    <set>
+      <if test="stuname != null">
+        stuname = #{stuname,jdbcType=CHAR},
+      </if>
+      <if test="stusex != null">
+        stusex = #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="stunation != null">
+        stunation = #{stunation,jdbcType=CHAR},
+      </if>
+      <if test="stucard != null">
+        stucard = #{stucard,jdbcType=CHAR},
+      </if>
+      <if test="stustatus != null">
+        stustatus = #{stustatus,jdbcType=CHAR},
+      </if>
+    </set>
+    where stuid = #{stuid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.marve1ous.model.Studentbak">
+    update studentbak
+    set stuname = #{stuname,jdbcType=CHAR},
+      stusex = #{stusex,jdbcType=INTEGER},
+      stunation = #{stunation,jdbcType=CHAR},
+      stucard = #{stucard,jdbcType=CHAR},
+      stustatus = #{stustatus,jdbcType=CHAR}
+    where stuid = #{stuid,jdbcType=CHAR}
+  </update>
+</mapper>

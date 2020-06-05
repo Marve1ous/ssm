@@ -1,9 +1,11 @@
 # Database properties
 ## jdbc.properties
-```
+
 jdbc.driver=com.mysql.jdbc.Driver
 #数据库地址
-jdbc.url=jdbc:mysql://address/database?useUnicode=true&characterEncoding=utf8&useSSL=false
+```
+jdbc.url=jdbc:mysql://[地址:端口]/[数据库]?useUnicode=true&characterEncoding=utf8&useSSL=false
+```
 #用户名
 jdbc.username=
 #密码
@@ -19,4 +21,3 @@ c3p0.checkoutTimeout=10000
 #当获取连接失败重试次数
 c3p0.acquireRetryAttempts=2
 ```
-## redis

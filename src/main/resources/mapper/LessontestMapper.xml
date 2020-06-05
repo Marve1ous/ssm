@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.LessontestMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.Lessontest">
+    <constructor>
+      <arg column="testid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="lessonid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="lessonname" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="cn.marve1ous.model.Lessontest">
+    insert into lessontest (testid, lessonid, lessonname
+      )
+    values (#{testid,jdbcType=CHAR}, #{lessonid,jdbcType=CHAR}, #{lessonname,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.Lessontest">
+    insert into lessontest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="testid != null">
+        testid,
+      </if>
+      <if test="lessonid != null">
+        lessonid,
+      </if>
+      <if test="lessonname != null">
+        lessonname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="testid != null">
+        #{testid,jdbcType=CHAR},
+      </if>
+      <if test="lessonid != null">
+        #{lessonid,jdbcType=CHAR},
+      </if>
+      <if test="lessonname != null">
+        #{lessonname,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

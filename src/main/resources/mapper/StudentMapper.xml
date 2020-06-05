@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.StudentMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.Student">
+    <constructor>
+      <idArg column="stuid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stuname" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stuclassid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stusex" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="stunation" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stucard" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stuyear" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    stuid, stuname, stuclassid, stusex, stunation, stucard, stuyear
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where stuid = #{stuid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from student
+    where stuid = #{stuid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.marve1ous.model.Student">
+    insert into student (stuid, stuname, stuclassid, 
+      stusex, stunation, stucard, 
+      stuyear)
+    values (#{stuid,jdbcType=CHAR}, #{stuname,jdbcType=CHAR}, #{stuclassid,jdbcType=CHAR}, 
+      #{stusex,jdbcType=INTEGER}, #{stunation,jdbcType=CHAR}, #{stucard,jdbcType=CHAR}, 
+      #{stuyear,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.Student">
+    insert into student
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuid != null">
+        stuid,
+      </if>
+      <if test="stuname != null">
+        stuname,
+      </if>
+      <if test="stuclassid != null">
+        stuclassid,
+      </if>
+      <if test="stusex != null">
+        stusex,
+      </if>
+      <if test="stunation != null">
+        stunation,
+      </if>
+      <if test="stucard != null">
+        stucard,
+      </if>
+      <if test="stuyear != null">
+        stuyear,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuid != null">
+        #{stuid,jdbcType=CHAR},
+      </if>
+      <if test="stuname != null">
+        #{stuname,jdbcType=CHAR},
+      </if>
+      <if test="stuclassid != null">
+        #{stuclassid,jdbcType=CHAR},
+      </if>
+      <if test="stusex != null">
+        #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="stunation != null">
+        #{stunation,jdbcType=CHAR},
+      </if>
+      <if test="stucard != null">
+        #{stucard,jdbcType=CHAR},
+      </if>
+      <if test="stuyear != null">
+        #{stuyear,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.marve1ous.model.Student">
+    update student
+    <set>
+      <if test="stuname != null">
+        stuname = #{stuname,jdbcType=CHAR},
+      </if>
+      <if test="stuclassid != null">
+        stuclassid = #{stuclassid,jdbcType=CHAR},
+      </if>
+      <if test="stusex != null">
+        stusex = #{stusex,jdbcType=INTEGER},
+      </if>
+      <if test="stunation != null">
+        stunation = #{stunation,jdbcType=CHAR},
+      </if>
+      <if test="stucard != null">
+        stucard = #{stucard,jdbcType=CHAR},
+      </if>
+      <if test="stuyear != null">
+        stuyear = #{stuyear,jdbcType=INTEGER},
+      </if>
+    </set>
+    where stuid = #{stuid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.marve1ous.model.Student">
+    update student
+    set stuname = #{stuname,jdbcType=CHAR},
+      stuclassid = #{stuclassid,jdbcType=CHAR},
+      stusex = #{stusex,jdbcType=INTEGER},
+      stunation = #{stunation,jdbcType=CHAR},
+      stucard = #{stucard,jdbcType=CHAR},
+      stuyear = #{stuyear,jdbcType=INTEGER}
+    where stuid = #{stuid,jdbcType=CHAR}
+  </update>
+  <select id="searchAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from student
+    <where>
+      <if test="id != null">
+        <bind name="idLike" value=" '%' + id + '%' "/>
+        stuid like #{idLike}
+      </if>
+      <if test="name != null">
+        <bind name="nameLike" value=" '%' + name + '%' "/>
+        and stuname like #{nameLike}
+      </if>
+      <if test="classid != null">
+        <bind name="classLike" value=" '%' + classid + '%' "/>
+        and stuclassid like #{classLike}
+      </if>
+      <if test="sex != 0">
+        and stusex = #{sex}
+      </if>
+      <if test="nation != null">
+        <bind name="idLike" value=" '%' + id + '%' "/>
+        and stunation = #{nation}
+      </if>
+      <if test="card != null">
+        and stucard = #{card}
+      </if>
+      <if test="year != 0">
+        and stuyear = #{year}
+      </if>
+    </where>
+    <bind name="rank" value="page*10"/>
+    limit #{rank}, 10
+  </select>
+  <select id="searchByCard" parameterType="String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from student
+    where stucard = #{card,jdbcType=CHAR}
+  </select>
+  <select id="getID" resultType="java.lang.Integer">
+    select max(stuid)+1 from student where stuyear = #{stuyear,jdbcType=INTEGER}
+  </select>
+  <select id="anyBody" resultType="java.lang.Integer">
+    select isnull((
+        select stuid from student
+        where stuyear = #{stuyear}
+        limit 1
+    ))
+  </select>
+  <select id="forTeacher" resultType="map">
+    select lessontest.testid, student.stuid, student.stuname,teacherlesson.lessonid, lesson.lessonname, stugrade.testgrade
+    from lessontest,
+    student,
+    teacher,
+    classlesson,
+    teacherclass,
+    teacherlesson,
+    lesson,
+    stugrade
+    where #{tid} = teacher.tid
+    and teacherclass.tid = teacher.tid
+    and teacherlesson.tid = teacher.tid
+    and teacherclass.classid = student.stuclassid
+    and teacherclass.classid = classlesson.classid
+    and lessontest.lessonid = teacherlesson.lessonid
+    and classlesson.lessonid = teacherlesson.lessonid
+    and lesson.lessonid = teacherlesson.lessonid
+    and stugrade.stuid = student.stuid
+    and stugrade.testid = lessontest.testid
+    and stugrade.lessonid = lessontest.lessonid
+    <bind name="rank" value="page*10"/>
+    limit #{rank}, 10;
+  </select>
+  <select id="forAdmin" resultType="map">
+    select lessontest.testid, student.stuid, student.stuname, lessontest.lessonid, lessontest.lessonname, stugrade.testgrade
+    from lessontest, student, classlesson, stugrade
+    where lessontest.lessonid = classlesson.lessonid
+    and classlesson.classid = student.stuclassid
+    and stugrade.stuid = student.stuid
+    and stugrade.testid = lessontest.testid
+    and stugrade.lessonid = lessontest.lessonid
+    <bind name="rank" value="page*10"/>
+    limit #{rank}, 10;
+  </select>
+  <select id="selectGrade" parameterType="java.lang.String" resultType="cn.marve1ous.model.Stugrade">
+    select * from stugrade
+    where stuid = #{stuid}
+  </select>
+  <insert id="insertGrade" parameterType="cn.marve1ous.model.Stugrade">
+    insert into stugrade(testid, stuid, lessonid, testgrade)
+    values (
+    #{testid}, #{stuid}, #{lessonid}, #{testgrade}
+    )
+  </insert>
+  <update id="updateGrade" parameterType="cn.marve1ous.model.Stugrade">
+    update stugrade
+    set testgrade = #{testgrade}
+    where testid=#{testid} and stuid=#{stuid} and lessonid=#{lessonid}
+  </update>
+  <select id="getRecentTest" parameterType="java.lang.String" resultType="java.lang.String">
+    select stugrade.testid from stugrade, lessontest, student, lesson
+    where stugrade.stuid = #{stuid}
+    and stugrade.stuid = student.stuid
+    and lessontest.lessonid = stugrade.lessonid
+    and lesson.lessonid = stugrade.lessonid
+    and stugrade.testid = lessontest.testid
+    and lessonyear = student.stuyear
+    order by stugrade.testid desc limit 1
+  </select>
+  <update id="cheat" parameterType="java.lang.String">
+    update stugrade
+    set testgrade = 0
+    where
+    stuid = #{stuid}
+    and testid = #{testid}
+  </update>
+  <select id="existGrade" parameterType="cn.marve1ous.model.Stugrade" resultType="int">
+    select isnull((
+      select testid from stugrade
+      where
+      testid=#{testid}
+      and stuid=#{stuid}
+      and lessonid=#{lessonid}
+      limit 1
+    ))
+  </select>
+  <select id="hasLesson" parameterType="java.lang.String" resultType="java.lang.String">
+    select classlesson.lessonid from student, class, classlesson
+    where student.stuid = #{stuid} and student.stuclassid = class.classid
+    and classlesson.classid=class.classid
+  </select>
+  <select id="tLesson" parameterType="java.lang.String" resultType="java.lang.String">
+    select lessonid from teacherlesson where tid=#{tid}
+  </select>
+  <select id="tClass" parameterType="java.lang.String" resultType="java.lang.String">
+    select classid from teacherclass where tid=#{tid}
+  </select>
+  <select id="selectResult" resultType="cn.marve1ous.model.Result">
+    select result.resultid, result.resultname, result.stuid, result.resulttype, result.resultact
+    from result, student
+    <where>
+      result.stuid = student.stuid
+      <if test="id != null">
+        <bind name="idLike" value=" '%' + id + '%' "/>
+        and student.stuid like #{idLike}
+      </if>
+      <if test="name != null">
+        <bind name="nameLike" value=" '%' + name + '%' "/>
+        and student.stuname like #{nameLike}
+      </if>
+      <if test="classid != null">
+        <bind name="classLike" value=" '%' + classid + '%' "/>
+        and student.stuclassid like #{classLike}
+      </if>
+      <if test="sex != 0">
+        and student.stusex = #{sex}
+      </if>
+      <if test="nation != null">
+        <bind name="idLike" value=" '%' + id + '%' "/>
+        and student.stunation = #{nation}
+      </if>
+      <if test="card != null">
+        and student.stucard = #{card}
+      </if>
+      <if test="year != 0">
+        and student.stuyear = #{year}
+      </if>
+    </where>
+    order by result.resultid desc
+    <bind name="rank" value="page*10"/>
+    limit #{rank}, 10
+  </select>
+  <insert id="insertResult" parameterType="cn.marve1ous.model.Result">
+    insert into result values (
+    #{resultid}, #{resultname}, #{stuid}, #{resulttype}, #{resultact}
+    )
+  </insert>
+  <update id="updateResult" parameterType="cn.marve1ous.model.Result">
+    update result
+    set resultname = #{resultname}, stuid = #{stuid},
+    resulttype = #{resulttype}, resultact = #{resultact}
+    where resultid=#{resultid}
+  </update>
+  <delete id="deleteResult" parameterType="java.lang.String">
+    delete from result where resultid = #{result}
+  </delete>
+  <select id="existResult" parameterType="java.lang.String" resultType="int">
+    select isnull((
+    select resultid from result
+    where
+    resultid=#{resultid}
+    limit 1
+    ))
+  </select>
+  <select id="turnInfo" resultType="cn.marve1ous.model.Turn">
+    select turn.turnid, turn.turnname, turn.stuid
+    from turn, studentbak
+    <where>
+      turn.stuid = studentbak.stuid
+      <if test="id != null">
+        <bind name="idLike" value=" '%' + id + '%' "/>
+        and student.stuid like #{idLike}
+      </if>
+      <if test="name != null">
+        <bind name="nameLike" value=" '%' + name + '%' "/>
+        and student.stuname like #{nameLike}
+      </if>
+      <if test="classid != null">
+        <bind name="classLike" value=" '%' + classid + '%' "/>
+        and student.stuclassid like #{classLike}
+      </if>
+      <if test="sex != 0">
+        and student.stusex = #{sex}
+      </if>
+      <if test="nation != null">
+        <bind name="idLike" value=" '%' + id + '%' "/>
+        and student.stunation = #{nation}
+      </if>
+      <if test="card != null">
+        and student.stucard = #{card}
+      </if>
+      <if test="year != 0">
+        and student.stuyear = #{year}
+      </if>
+    </where>
+    order by turn.turnid desc
+    <bind name="rank" value="page*10"/>
+    limit #{rank}, 10
+  </select>
+  <insert id="insertTurn" parameterType="cn.marve1ous.model.Turn">
+    insert into Turn
+    values (
+    #{turnid}, #{turnname}, #{stuid}
+    )
+  </insert>
+  <update id="updateTurncard" parameterType="java.lang.String">
+    update turn
+    set stuid = #{newcard}
+    where stuid = #{card}
+  </update>
+  <update id="updateUsername" parameterType="java.lang.String">
+    update user
+    set username = #{name}
+    where userid = #{id}
+  </update>
+  <delete id="deleteStugrade" parameterType="java.lang.String">
+    delete from stugrade
+    where stuid=#{id}
+  </delete>
+  <delete id="deleteRes" parameterType="java.lang.String">
+    delete from result
+    where stuid=#{id}
+  </delete>
+  <select id="existTest" parameterType="java.lang.String" resultType="int">
+    select isnull((
+    select testid from lessontest
+    where
+    testid=#{testid}
+    limit 1
+    ))
+  </select>
+  <update id="updateBak" parameterType="java.lang.String">
+    update studentbak
+    set stustatus = #{status}
+    where stuid = #{id}
+  </update>
+  <select id="countName" resultType="java.lang.String">
+    select turnname from turn group by turnname order by turnname;
+  </select>
+  <select id="countNameNum" resultType="int">
+    select count(turnname) from turn group by turnname order by turnname;
+  </select>
+</mapper>

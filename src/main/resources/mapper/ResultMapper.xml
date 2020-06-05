@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.ResultMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.Result">
+    <constructor>
+      <idArg column="resultid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="resultname" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stuid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="resulttype" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="resultact" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    resultid, resultname, stuid, resulttype, resultact
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from result
+    where resultid = #{resultid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from result
+    where resultid = #{resultid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.marve1ous.model.Result">
+    insert into result (resultid, resultname, stuid, 
+      resulttype, resultact)
+    values (#{resultid,jdbcType=INTEGER}, #{resultname,jdbcType=CHAR}, #{stuid,jdbcType=CHAR}, 
+      #{resulttype,jdbcType=INTEGER}, #{resultact,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.Result">
+    insert into result
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resultid != null">
+        resultid,
+      </if>
+      <if test="resultname != null">
+        resultname,
+      </if>
+      <if test="stuid != null">
+        stuid,
+      </if>
+      <if test="resulttype != null">
+        resulttype,
+      </if>
+      <if test="resultact != null">
+        resultact,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resultid != null">
+        #{resultid,jdbcType=INTEGER},
+      </if>
+      <if test="resultname != null">
+        #{resultname,jdbcType=CHAR},
+      </if>
+      <if test="stuid != null">
+        #{stuid,jdbcType=CHAR},
+      </if>
+      <if test="resulttype != null">
+        #{resulttype,jdbcType=INTEGER},
+      </if>
+      <if test="resultact != null">
+        #{resultact,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.marve1ous.model.Result">
+    update result
+    <set>
+      <if test="resultname != null">
+        resultname = #{resultname,jdbcType=CHAR},
+      </if>
+      <if test="stuid != null">
+        stuid = #{stuid,jdbcType=CHAR},
+      </if>
+      <if test="resulttype != null">
+        resulttype = #{resulttype,jdbcType=INTEGER},
+      </if>
+      <if test="resultact != null">
+        resultact = #{resultact,jdbcType=CHAR},
+      </if>
+    </set>
+    where resultid = #{resultid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.marve1ous.model.Result">
+    update result
+    set resultname = #{resultname,jdbcType=CHAR},
+      stuid = #{stuid,jdbcType=CHAR},
+      resulttype = #{resulttype,jdbcType=INTEGER},
+      resultact = #{resultact,jdbcType=CHAR}
+    where resultid = #{resultid,jdbcType=INTEGER}
+  </update>
+</mapper>

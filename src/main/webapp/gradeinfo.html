@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>成绩信息</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.min.css" />
+    <link rel="stylesheet" href="assets/css/fullcalendar.print.css" media='print' />
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/jquery.min.js"></script>
+
+</head>
+
+<body data-type="widgets">
+    <script src="assets/js/theme.js"></script>
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+            <!-- logo -->
+            <div class="am-fl tpl-header-logo">
+                <a style="font-size: larger;">
+                    学籍管理系统
+                </a>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 其它功能-->
+                <div class="am-fr tpl-header-navbar">
+                    <ul>
+                        <!-- 退出 -->
+                        <li class="am-text-sm">
+                            <a href="/logout">
+                                <span class="am-icon-sign-out"></span> 退出
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar">
+            <!--        用户信息-->
+            <div class="tpl-sidebar-user-panel">
+                <div class="tpl-user-panel-slide-toggleable">
+                    <div style="color: #f5f5dc" id="welcome">
+                        欢迎你：
+                    </div>
+
+                    <span class="user-panel-logged-in-text">
+                    </span>
+                </div>
+            </div>
+
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+
+                <li class="sidebar-nav-link">
+                    <a href="index.html">
+                        <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                    </a>
+                </li>
+
+                <li class="sidebar-nav-heading">管理<span class="sidebar-nav-heading-info"> 系统功能</span></li>
+
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-key sidebar-nav-link-logo"></i> 账户信息管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="userinfo.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 账户信息
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="userpwd.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 密码更改
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 学籍信息管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico "></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="stuadd.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 学籍信息导入
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="stuinfo.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 学籍信息管理
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title active">
+                        <i class="am-icon-tachometer sidebar-nav-link-logo"></i> 成绩管理
+                        <span
+                            class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                        <li class="sidebar-nav-link">
+                            <a href="grademe.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 学生个人成绩查询
+                            </a>
+                        </li>
+                        <li class="sidebar-nav-link">
+                            <a href="gradeadd.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 成绩导入
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="gradeinfo.html" class="sub-active">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 成绩修改
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 奖惩管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="resultadd.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 奖惩导入
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="resultinfo.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 奖惩修改
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 人员流动管理
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub">
+                        <li class="sidebar-nav-link">
+                            <a href="turninfo.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 人员流动信息
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="turnact.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 人员流动操作
+                            </a>
+                        </li>
+
+                        <li class="sidebar-nav-link">
+                            <a href="turnchart.html">
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 人员流动统计
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+
+
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+
+            <div class="container-fluid am-cf">
+                <div class="row">
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
+                        <div class="page-header-heading"><span
+                                class="am-icon-tachometer page-header-heading-icon"></span> 成绩管理
+                            <small>成绩修改</small></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row-content am-cf">
+
+                <div class="row">
+
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                        <div class="widget am-cf">
+                            <div class="widget-head am-cf">
+                                <div class="widget-title  am-cf">成绩信息列表</div>
+                            </div>
+
+
+                            <div class="widget-body  am-fr">
+
+                                <div class="am-u-sm-12 am-u-md-6 am-u-lg-3">
+                                    <div class=" am-input-group-sm tpl-form-border-form cl-p">
+                                        <span>条件查询</span>
+                                    </div>
+                                </div>
+
+                                <div class="am-u-sm-12 am-u-md-6 am-u-lg-2">
+                                    <div class=" am-input-group-sm tpl-form-border-form cl-p">
+                                        <input type="text" class="am-form-field " placeholder="学号:" id="search-id">
+                                    </div>
+                                </div>
+                                <div class="am-u-sm-12 am-u-md-6 am-u-lg-2">
+                                    <div class=" am-input-group-sm tpl-form-border-form cl-p">
+                                        <input type="text" class="am-form-field " placeholder="姓名:" id="search-name">
+                                    </div>
+                                </div>
+                                <div class="am-u-sm-12 am-u-md-6 am-u-lg-2">
+                                    <div class=" am-input-group-sm tpl-form-border-form cl-p">
+                                        <input type="text" class="am-form-field " placeholder="班级:" id="search-class">
+                                    </div>
+                                </div>
+                                <div class="am-u-sm-12 am-u-md-12 am-u-lg-3">
+                                    <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
+                                        <input type="text" class="am-form-field " placeholder="年级:" id="search-year">
+                                        <span class="am-input-group-btn">
+                                        <button
+                                                class="am-btn  am-btn-default am-btn-success tpl-table-list-field am-icon-search"
+                                                type="button" onclick=""></button>
+                                    </span>
+                                    </div>
+                                </div>
+
+                                <div class="am-u-sm-12" id="getinfo">
+                                    <table width="100%" class="am-table am-table-compact am-table-striped tpl-table-black "
+                                           id="example-r">
+                                        <thead>
+                                        <tr>
+                                            <th>考试号</th>
+                                            <th>学号</th>
+                                            <th>姓名</th>
+                                            <th>课程号</th>
+                                            <th>课程名</th>
+                                            <th>成绩</th>
+                                            <th>操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="stutable">
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="am-u-lg-12 am-cf">
+
+                                    <div class="am-fr">
+                                        <ul class="am-pagination tpl-pagination">
+                                            <li>
+                                                <button onclick="prepage()">«</button>
+                                            </li>
+                                            <li class="am-active"><a id="setpage">1</a><input value="0" id="total"
+                                                                                              style="display: none;"></li>
+                                            <li>
+                                                <button onclick="nextpage()">»</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="widget-body am-fr" style="margin-top: 30px;" id="editstudent">
+                            <form class="am-form tpl-form-border-form tpl-form-border-br">
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">考试号</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" placeholder="输入考试号" id="user-test" required readonly>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">课程号</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" placeholder="输入课程号" id="user-lesson" required readonly>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">课程名</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" placeholder="输入课程号" id="user-lessonname" required readonly>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">学号</label>
+                                    <div class="am-u-sm-9" style="text-align: left;">
+                                        <input type="text" class="tpl-form-input" id="user-id"
+                                               placeholder="请输入学号" required readonly>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">姓名</label>
+                                    <div class="am-u-sm-9" style="text-align: left;">
+                                        <input type="text" class="tpl-form-input" id="user-name"
+                                               placeholder="请输入学号" required readonly>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">成绩</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" placeholder="请输入成绩" id="user-grade" required>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button type="button" onclick="toupdate()"
+                                                class="am-btn am-btn-primary tpl-btn-bg-color-success ">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="assets/js/moment.js"></script>
+    <script src="assets/js/amazeui.min.js"></script>
+    <script src="assets/js/fullcalendar.min.js"></script>
+    <script src="assets/js/app.js"></script>
+
+    <script>
+        //   开启本地储存 
+        var state = window.localStorage;
+        var id = state.getItem("id");
+        var user = state.getItem("name");
+        var role = state.getItem("role");
+        if (user != null && user.toString().length !== 0 && role != null && role.toString().length !== 0) {
+            var welcome = document.getElementById("welcome");
+            role = role.toUpperCase();
+            welcome.innerHTML += "<span style=\"color: darkseagreen; \">  " + role + "</span>" + "," + user;
+        }
+
+        stulist = {};
+        window.onload = getstu(stulist);
+        var student;
+        function getstu(allData) {
+            $.ajax({
+                url: 'getMyStudent',
+                type: 'post',
+                // 设置的是请求参数
+                data: JSON.stringify(allData),
+                // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+                contentType: 'application/json;charset=utf-8',
+                success: function (res) {
+                    // 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+                    // 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+                    console.log(res);
+                    if (res.list != null && res.list.length !== 0) {
+                        document.getElementById("stutable").innerHTML = "";
+                        student = res.list;
+                        for (i = 0; i < res.list.length; i++) {
+                            stu = res.list[i];
+                            document.getElementById("stutable").innerHTML +=
+                                "<tr class=\"gradeX\">" +
+                                "<td id=\"user-test" + i + "\">" + stu.testid + "</td>" +
+                                "<td id=\"user-id" + i + "\">" + stu.stuid + "</td>" +
+                                "<td id=\"user-name" + i + "\">" + stu.stuname + "</td>" +
+                                "<td id=\"user-lesson" + i + "\">" + stu.lessonid + "</td>" +
+                                "<td id=\"user-lessonname" + i + "\">" + stu.lessonname + "</td>" +
+                                "<td id=\"user-grade" + i + "\">" + stu.testgrade + "</td>" +
+                                "<td>" +
+                                "<div class=\"tpl-table-black-operation\">" +
+                                "<button href=\"javascript:;\" class=\"tpl-table-black-operation\" value=\"" + i + "\" onclick='saveupdate(this.value)' " +
+                                "style=\"border-color: #ea6e0c;color: #ea6e0c\">" +
+                                "<i class=\"am-icon-pencil\"></i> 编辑" +
+                                "</button>" +
+                                "</div>" +
+                                "</td>" +
+                                "</tr>";
+                        }
+                        document.getElementById("total").value = res.list.length;
+                        var tablepage = res.page;
+                        if (tablepage != null)
+                            document.getElementById("setpage").innerText = tablepage;
+                    }
+                }
+            })
+        }
+
+        function saveupdate(val) {
+            v = parseInt(val);
+            document.getElementById("user-id").value = student[v].stuid;
+            document.getElementById("user-name").value = student[v].stuname;
+            document.getElementById("user-test").value = student[v].testid;
+            document.getElementById("user-lesson").value = student[v].lessonid;
+            document.getElementById("user-lessonname").value = student[v].lessonname;
+            document.getElementById("user-grade").value = student[v].testgrade;
+        }
+
+        function toupdate() {
+            stuid = document.getElementById("user-id").value;
+            testid = document.getElementById("user-test").value;
+            lessonid = document.getElementById("user-lesson").value;
+            grade = document.getElementById("user-grade").value;
+            method = "update";
+            allData = {
+                "testid": testid,
+                "stuid": stuid,
+                "lessonid": lessonid,
+                "grade": grade,
+                "method": method
+            };
+            return updatestu(allData);
+        }
+
+        function search() {
+            var userid = document.getElementById("search-id").value;
+            var username = document.getElementById("search-name").value;
+            var userclass = document.getElementById("search-class").value;
+            var useryear = document.getElementById("search-year").value;
+            searchdata = {
+                "id": userid,
+                "name": username,
+                "classid": userclass,
+                "year": useryear
+            }
+            getstu(searchdata);
+        }
+
+        function updatestu(allData) {
+            $.ajax({
+                url: 'uploadGrade',
+                type: 'post',
+                // 设置的是请求参数
+                data: JSON.stringify(allData),
+                // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+                contentType: 'application/json;charset=utf-8',
+                success: function (res) {
+                    // 一旦设置的 dataType 选项，就不再关心 服务端 响应的 Content-Type 了
+                    // 客户端会主观认为服务端返回的就是 JSON 格式的字符串
+                    alert(res.result);
+                    console.log(res);
+                    if (res.result === "提交成功") {
+                        window.location.href = "gradeinfo.html";
+                    }
+
+                }
+            })
+        }
+
+        function prepage() {
+            var cur = document.getElementById("setpage").innerText;
+            cur = parseInt(cur);
+            if (cur != 1) {
+                cur = cur - 2;
+                predata = {"page": cur};
+                getstu(predata);
+            }
+
+        }
+
+        function nextpage() {
+            var num = document.getElementById("total").value;
+            var cur = document.getElementById("setpage").innerText;
+            cur = parseInt(cur);
+            if (num == 10) {
+                nextdata = {"page": cur};
+                getstu(nextdata);
+            }
+        }
+
+    </script>
+
+
+</body>
+
+</html>

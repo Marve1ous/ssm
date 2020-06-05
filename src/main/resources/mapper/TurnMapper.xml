@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.TurnMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.Turn">
+    <constructor>
+      <idArg column="turnid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="turnname" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stuid" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    turnid, turnname, stuid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from turn
+    where turnid = #{turnid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from turn
+    where turnid = #{turnid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.marve1ous.model.Turn">
+    insert into turn (turnid, turnname, stuid
+      )
+    values (#{turnid,jdbcType=CHAR}, #{turnname,jdbcType=CHAR}, #{stuid,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.Turn">
+    insert into turn
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="turnid != null">
+        turnid,
+      </if>
+      <if test="turnname != null">
+        turnname,
+      </if>
+      <if test="stuid != null">
+        stuid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="turnid != null">
+        #{turnid,jdbcType=CHAR},
+      </if>
+      <if test="turnname != null">
+        #{turnname,jdbcType=CHAR},
+      </if>
+      <if test="stuid != null">
+        #{stuid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.marve1ous.model.Turn">
+    update turn
+    <set>
+      <if test="turnname != null">
+        turnname = #{turnname,jdbcType=CHAR},
+      </if>
+      <if test="stuid != null">
+        stuid = #{stuid,jdbcType=CHAR},
+      </if>
+    </set>
+    where turnid = #{turnid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.marve1ous.model.Turn">
+    update turn
+    set turnname = #{turnname,jdbcType=CHAR},
+      stuid = #{stuid,jdbcType=CHAR}
+    where turnid = #{turnid,jdbcType=CHAR}
+  </update>
+</mapper>

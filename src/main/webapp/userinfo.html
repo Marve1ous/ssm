@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>用户信息</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/fullcalendar.min.css"/>
+    <link rel="stylesheet" href="assets/css/fullcalendar.print.css" media='print'/>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/jquery.min.js"></script>
+
+</head>
+
+<body data-type="widgets">
+<script src="assets/js/theme.js"></script>
+<div class="am-g tpl-g">
+    <!-- 头部 -->
+    <header>
+        <!-- logo -->
+        <div class="am-fl tpl-header-logo">
+            <a style="font-size: larger;">
+                学籍管理系统
+            </a>
+        </div>
+        <!-- 右侧内容 -->
+        <div class="tpl-header-fluid">
+            <!-- 其它功能-->
+            <div class="am-fr tpl-header-navbar">
+                <ul>
+                    <!-- 退出 -->
+                    <li class="am-text-sm">
+                        <a href="/logout">
+                            <span class="am-icon-sign-out"></span> 退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- 侧边导航栏 -->
+    <div class="left-sidebar">
+        <!--        用户信息-->
+        <div class="tpl-sidebar-user-panel">
+            <div class="tpl-user-panel-slide-toggleable">
+                <div style="color: #f5f5dc" id="welcome">
+                    欢迎你：
+                </div>
+
+                <span class="user-panel-logged-in-text">
+          </span>
+            </div>
+        </div>
+
+        <!-- 菜单 -->
+        <ul class="sidebar-nav">
+
+            <li class="sidebar-nav-link">
+                <a href="index.html">
+                    <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                </a>
+            </li>
+
+            <li class="sidebar-nav-heading">管理<span class="sidebar-nav-heading-info"> 系统功能</span></li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title active">
+                    <i class="am-icon-key sidebar-nav-link-logo"></i> 账户信息管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico  sidebar-nav-sub-ico-rotate"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub" style="display: block;">
+                    <li class="sidebar-nav-link">
+                        <a href="userinfo.html" class="sub-active">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 账户信息
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="userpwd.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 密码更改
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-table sidebar-nav-link-logo"></i> 学籍信息管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="stuadd.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 学籍信息导入
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="stuinfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 学籍信息管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-tachometer sidebar-nav-link-logo"></i> 成绩管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="grademe.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 学生个人成绩查询
+                        </a>
+                    </li>
+                    <li class="sidebar-nav-link">
+                        <a href="gradeadd.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 成绩导入
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="gradeinfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 成绩修改
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 奖惩管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="resultadd.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 奖惩导入
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="resultinfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 奖惩修改
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 人员流动管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="turninfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 人员流动信息
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="turnact.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 人员流动操作
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="turninfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 人员流动统计
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+
+    <!-- 内容区域 -->
+    <div class="tpl-content-wrapper">
+
+        <div class="container-fluid am-cf">
+            <div class="row">
+                <div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
+                    <div class="page-header-heading"><span class="am-icon-key page-header-heading-icon"></span> 账户信息
+                        <small>详细资料</small></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row-content am-cf">
+            <!--            <div class="row  am-cf">-->
+            <div class="am-g tpl-g">
+                <div class="tpl-login">
+                    <div class="tpl-login-content">
+                        <div class="tpl-login-title">当前用户信息</div>
+
+
+                        <form class="am-form tpl-form-line-form">
+
+                            <div class="am-form-group">
+                                <input type="text" class="tpl-form-input" id="getid" readonly value="用户id：">
+                            </div>
+
+                            <div class="am-form-group">
+                                <input type="text" class="tpl-form-input" id="getname" readonly value="用户名：">
+                            </div>
+
+                            <div class="am-form-group">
+                                <input type="text" class="tpl-form-input" id="getrole" readonly value="用户权限：">
+                            </div>
+                        </form>
+                        <script>
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <!--            </div>-->
+        </div>
+    </div>
+
+</div>
+
+<script src="assets/js/moment.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="assets/js/fullcalendar.min.js"></script>
+<script src="assets/js/app.js"></script>
+
+<script>
+    //   开启本地储存 
+    var state = window.localStorage;
+    var id = state.getItem("id");
+    var user = state.getItem("name");
+    var role = state.getItem("role");
+    if (user != null && user.toString().length !== 0 && role != null && role.toString().length !== 0) {
+        var welcome = document.getElementById("welcome");
+        role = role.toUpperCase();
+        welcome.innerHTML += "<span style=\"color: darkseagreen; \">  " + role + "</span>" + "," + user;
+        if (id != null && id.toString().length !== 0) {
+            document.getElementById("getid").value += id;
+            document.getElementById("getname").value += user;
+            document.getElementById("getrole").value += role;
+        }
+    }
+
+</script>
+
+
+</body>
+
+</html>

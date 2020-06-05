@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Amaze UI Admin index Examples</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="../assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="../assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="../assets/css/fullcalendar.min.css" />
+    <link rel="stylesheet" href="../assets/css/fullcalendar.print.css" media='print' />
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <script src="../assets/js/jquery.min.js"></script>
+
+</head>
+
+<body data-type="widgets">
+    <script src="../assets/js/theme.js"></script>
+    <div class="am-g tpl-g">
+
+        <div class="row-content am-cf">
+            <div class="widget am-cf" style="height: 600px;">
+                <div class="widget-body">
+                    <div class="tpl-page-state" style="margin-top: 80px;">
+                        <div class="tpl-page-state-title am-text-center tpl-error-title">404</div>
+                        <div class="tpl-error-title-info">Page Not Found</div>
+                        <div class="tpl-page-state-content tpl-error-content">
+
+                            <p>对不起,没有找到您所需要的页面,可能是URL不确定,或者页面已被移除。</p>
+                            <button type="button" onclick="backindex()"
+                                class="am-btn am-btn-secondary am-radius tpl-error-btn">Back
+                                Home</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="../assets/js/moment.js"></script>
+    <script src="../assets/js/amazeui.min.js"></script>
+    <script src="../assets/js/fullcalendar.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+
+    <script>
+        //   开启本地储存 
+        var state = window.localStorage;
+        var id = state.getItem("id");
+        var user = state.getItem("name");
+        var role = state.getItem("role");
+        if (user != null && user.toString().length !== 0 && role != null && role.toString().length !== 0) {
+            var welcome = document.getElementById("welcome");
+            role = role.toUpperCase();
+            welcome.innerHTML += "<span style=\"color: darkseagreen; \">  " + role + "</span>" + "," + user;
+            if (id != null && id.toString().length !== 0) {
+                document.getElementById("getid").value += id;
+                document.getElementById("getname").value += user;
+                document.getElementById("getrole").value += role;
+            }
+        }
+
+        function backindex() {
+            window.location.href = "index.html";
+        }
+    </script>
+
+
+</body>
+
+</html>

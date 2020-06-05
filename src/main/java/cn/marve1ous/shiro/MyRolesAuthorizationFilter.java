@@ -8,6 +8,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import java.util.Set;
 
+// 角色过滤器
 public class MyRolesAuthorizationFilter extends AuthorizationFilter {
     @SuppressWarnings({"unchecked"})
     public boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {

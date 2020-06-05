@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.ClasslessonMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.Classlesson">
+    <constructor>
+      <arg column="classid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="lessonid" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="cn.marve1ous.model.Classlesson">
+    insert into classlesson (classid, lessonid)
+    values (#{classid,jdbcType=CHAR}, #{lessonid,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.Classlesson">
+    insert into classlesson
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="classid != null">
+        classid,
+      </if>
+      <if test="lessonid != null">
+        lessonid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="classid != null">
+        #{classid,jdbcType=CHAR},
+      </if>
+      <if test="lessonid != null">
+        #{lessonid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

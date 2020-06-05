@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.User">
+    <constructor>
+      <idArg column="userid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="userpwd" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="username" javaType="java.lang.String" jdbcType="CHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    userid, userpwd, username
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where userid = #{userid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user
+    where userid = #{userid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.marve1ous.model.User">
+    insert into user (userid, userpwd, username)
+    values (#{userid,jdbcType=CHAR}, #{userpwd,jdbcType=CHAR}, #{username,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="userpwd != null">
+        userpwd,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=CHAR},
+      </if>
+      <if test="userpwd != null">
+        #{userpwd,jdbcType=CHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.marve1ous.model.User">
+    update user
+    <set>
+      <if test="userpwd != null">
+        userpwd = #{userpwd,jdbcType=CHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=CHAR},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.marve1ous.model.User">
+    update user
+    set userpwd = #{userpwd,jdbcType=CHAR},
+      username = #{username,jdbcType=CHAR}
+    where userid = #{userid,jdbcType=CHAR}
+  </update>
+  <select id="getUserRole" parameterType="String" resultType="String">
+        SELECT rolename
+        FROM userrole,
+             role
+        WHERE userrole.roleid = role.roleid
+          AND userrole.userid = #{id}
+    </select>
+  <select id="getPermissionByRole" parameterType="String" resultType="String">
+        SELECT permissionname
+        FROM permission,
+             rolepermission,
+             Role
+        WHERE permission.permissionid = rolepermission.permissionid
+          AND role.roleid = rolepermission.roleid
+          AND role.rolename = #{role}
+    </select>
+</mapper>

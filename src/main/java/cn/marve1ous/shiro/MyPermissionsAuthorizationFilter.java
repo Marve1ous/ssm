@@ -9,6 +9,7 @@ import javax.servlet.ServletResponse;
 import java.util.Iterator;
 import java.util.Set;
 
+// 权限过滤器
 public class MyPermissionsAuthorizationFilter extends AuthorizationFilter {
 
     public boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.StugradeMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.Stugrade">
+    <constructor>
+      <arg column="testid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="stuid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="lessonid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="testgrade" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="cn.marve1ous.model.Stugrade">
+    insert into stugrade (testid, stuid, lessonid, 
+      testgrade)
+    values (#{testid,jdbcType=CHAR}, #{stuid,jdbcType=CHAR}, #{lessonid,jdbcType=CHAR}, 
+      #{testgrade,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.Stugrade">
+    insert into stugrade
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="testid != null">
+        testid,
+      </if>
+      <if test="stuid != null">
+        stuid,
+      </if>
+      <if test="lessonid != null">
+        lessonid,
+      </if>
+      <if test="testgrade != null">
+        testgrade,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="testid != null">
+        #{testid,jdbcType=CHAR},
+      </if>
+      <if test="stuid != null">
+        #{stuid,jdbcType=CHAR},
+      </if>
+      <if test="lessonid != null">
+        #{lessonid,jdbcType=CHAR},
+      </if>
+      <if test="testgrade != null">
+        #{testgrade,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

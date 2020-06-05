@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.marve1ous.dao.LessonMapper">
+  <resultMap id="BaseResultMap" type="cn.marve1ous.model.Lesson">
+    <constructor>
+      <idArg column="lessonid" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="lessonname" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="lessonyear" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    lessonid, lessonname, lessonyear
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lesson
+    where lessonid = #{lessonid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from lesson
+    where lessonid = #{lessonid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.marve1ous.model.Lesson">
+    insert into lesson (lessonid, lessonname, lessonyear
+      )
+    values (#{lessonid,jdbcType=CHAR}, #{lessonname,jdbcType=CHAR}, #{lessonyear,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.marve1ous.model.Lesson">
+    insert into lesson
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lessonid != null">
+        lessonid,
+      </if>
+      <if test="lessonname != null">
+        lessonname,
+      </if>
+      <if test="lessonyear != null">
+        lessonyear,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lessonid != null">
+        #{lessonid,jdbcType=CHAR},
+      </if>
+      <if test="lessonname != null">
+        #{lessonname,jdbcType=CHAR},
+      </if>
+      <if test="lessonyear != null">
+        #{lessonyear,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.marve1ous.model.Lesson">
+    update lesson
+    <set>
+      <if test="lessonname != null">
+        lessonname = #{lessonname,jdbcType=CHAR},
+      </if>
+      <if test="lessonyear != null">
+        lessonyear = #{lessonyear,jdbcType=INTEGER},
+      </if>
+    </set>
+    where lessonid = #{lessonid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.marve1ous.model.Lesson">
+    update lesson
+    set lessonname = #{lessonname,jdbcType=CHAR},
+      lessonyear = #{lessonyear,jdbcType=INTEGER}
+    where lessonid = #{lessonid,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -14,26 +14,55 @@
         <!-- 权限管理器 -->
         <property name="securityManager" ref="securityManager"/>
         <!-- 登录地址 -->
-        <property name="loginUrl" value="/index.html"/>
+        <property name="loginUrl" value="/sign-in.html"/>
         <!-- 登录后跳转到业务页面 -->
-        <!-- <property name="successUrl" value="/ok.html"/> -->
+        <!-- <property name="successUrl" value="/"/> -->
         <!-- 错误页面 -->
-        <property name="unauthorizedUrl" value="/user/unauth"/>
+        <property name="unauthorizedUrl" value="/unauth"/>
         <!-- 权限配置 -->
         <property name="filterChainDefinitions">
             <value>
-                /index.html = anon
-                /user/login = anon
-                /user/unauthorized = anon
-                /user/logout = authc
-                /user/unauth = anon
+                /sign-in.html = anon
+                /login = anon
+                /find.html = anon
+                /found = anon
+                /signup = anon
+                /unauth = anon
+                /unauthorized = anon
 
-                <!-- 权限 -->
-                /user/get* = anyPerms[search]
-                /user/all = anyPerms[searchAll]
+                / = authc
+                /index.html = authc
+                /logout = authc
+                /userinfo.html = authc
+                /userpwd.html = authc
+                /changepwd = authc
+                /info = authc
+                /grademe.html = anyRoles[student]
+                /gradeadd.html = anyRoles[admin, teacher]
+                /gradeinfo.html = anyRoles[admin, teacher]
+                /resultadd.html = anyRoles[admin]
+                /resultinfo.html = anyRoles[admin]
+                /turninfo.html = anyRoles[admin]
+                /turnact.html = anyRoles[admin]
+                /turnchart.html = anyRoles[admin]
+                /stuinfo.html = anyRoles[admin]
+                /stuadd.html = anyRoles[admin]
+                /studentInsert = anyRoles[admin]
+                /studentModify = anyRoles[admin]
+                /getStudent = anyRoles[admin]
+                /getGrade = anyRoles[student]
+                /getMyStudent = anyRoles[admin, teacher]
+                /uploadGrade = anyRoles[admin, teacher]
+                /resultInsert = anyRoles[admin]
+                /resultSearch = anyRoles[admin]
+                /resultManage = anyRoles[admin]
+                /turnInfo = anyRoles[admin]
+                /turnDo = anyRoles[admin]
+                /turnAll = anyRoles[admin]
+                 <!-- 权限 -->
+<!--                /get* = anyPerms[search]-->
                 <!-- 角色 -->
-                /user/** = anyRoles[admin]
-
+<!--                /user/** = anyRoles[admin]-->
             </value>
         </property>
     </bean>

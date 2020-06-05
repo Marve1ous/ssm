@@ -1,15 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Hello</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>学籍信息跟踪管理系统</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/fullcalendar.min.css"/>
+    <link rel="stylesheet" href="assets/css/fullcalendar.print.css" media='print'/>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/jquery.min.js"></script>
+
 </head>
-<body>
-    <form action="/user/login" method="post">
-        userID<input type="text" name="userId"/>
-        userPassword<input type="password" name="password"/>
-        <input type="submit" value="提交">
-        <input type="reset" value="重置">
-    </form>
+
+<body data-type="widgets">
+<script src="assets/js/theme.js"></script>
+<div class="am-g tpl-g">
+    <!-- 头部 -->
+    <header>
+        <!-- logo -->
+        <div class="am-fl tpl-header-logo">
+            <a style="font-size: larger;">
+                学籍管理系统
+            </a>
+        </div>
+        <!-- 右侧内容 -->
+        <div class="tpl-header-fluid">
+            <!-- 其它功能-->
+            <div class="am-fr tpl-header-navbar">
+                <ul>
+                    <!-- 退出 -->
+                    <li class="am-text-sm">
+                        <a href="/logout">
+                            <span class="am-icon-sign-out"></span> 退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- 侧边导航栏 -->
+    <div class="left-sidebar">
+        <!--        用户信息-->
+        <div class="tpl-sidebar-user-panel">
+            <div class="tpl-user-panel-slide-toggleable">
+                <div style="color: #f5f5dc" id="welcome">
+                    欢迎你：
+                </div>
+
+                <span class="user-panel-logged-in-text">
+          </span>
+            </div>
+        </div>
+
+        <!-- 菜单 -->
+        <ul class="sidebar-nav">
+
+            <li class="sidebar-nav-link">
+                <a class="active" href="index.html">
+                    <i class="am-icon-home sidebar-nav-link-logo"></i> 首页
+                </a>
+            </li>
+
+            <li class="sidebar-nav-heading">管理<span class="sidebar-nav-heading-info"> 系统功能</span></li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-key sidebar-nav-link-logo"></i> 账户信息管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="userinfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 账户信息
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="userpwd.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 密码更改
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-table sidebar-nav-link-logo"></i> 学籍信息管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="stuadd.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 学籍信息导入
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="stuinfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 学籍信息管理
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-tachometer sidebar-nav-link-logo"></i> 成绩管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="grademe.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 学生个人成绩查询
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="gradeadd.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 成绩导入
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="gradeinfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 成绩修改
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-wpforms sidebar-nav-link-logo"></i> 奖惩管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="resultadd.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 奖惩导入
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="resultinfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 奖惩修改
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="sidebar-nav-link">
+                <a href="javascript:;" class="sidebar-nav-sub-title">
+                    <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 人员流动管理
+                    <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+                </a>
+                <ul class="sidebar-nav sidebar-nav-sub">
+                    <li class="sidebar-nav-link">
+                        <a href="turninfo.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 人员流动信息
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="turnact.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 人员流动操作
+                        </a>
+                    </li>
+
+                    <li class="sidebar-nav-link">
+                        <a href="turnchart.html">
+                            <span class="am-icon-angle-right sidebar-nav-link-logo"></span> 人员流动统计
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+
+    <!-- 内容区域 -->
+    <div class="tpl-content-wrapper">
+
+
+        <div class="row-content am-cf">
+            <div class="tpl-calendar-box">
+                <div id="calendar"></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<!-- 弹出层 -->
+<div class="am-modal am-modal-no-btn" id="calendar-edit-box">
+    <div class="am-modal-dialog tpl-model-dialog">
+        <div class="am-modal-hd">
+            <a href="javascript: void(0)" class="am-close edit-box-close am-close-spin" data-am-modal-close>&times;</a>
+        </div>
+        <div class="am-modal-bd tpl-am-model-bd am-cf">
+
+            <form class="am-form tpl-form-border-form">
+                <div class="am-form-group am-u-sm-12">
+                    <label for="user-name" class="am-u-sm-12 am-form-label am-text-left">标题 <span
+                            class="tpl-form-line-small-title">Title</span></label>
+                    <div class="am-u-sm-12">
+                        <input type="text" class="tpl-form-input am-margin-top-xs calendar-edit-box-title"
+                               id="user-name" placeholder="" disabled>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<script src="assets/js/moment.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="assets/js/fullcalendar.min.js"></script>
+<script src="assets/js/app.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var editBox = $('#calendar-edit-box');
+
+        $('.edit-box-close').on('click', function () {
+            $('#calendar').fullCalendar('unselect');
+        })
+        $('#calendar').fullCalendar({
+
+            header: {
+                left: 'prev, ',
+                center: 'today, title',
+                right: 'next'
+            },
+
+            monthNames: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            monthNamesShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            dayNames: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+            dayNamesShort: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+            today: ["今天"],
+            firstDay: 1,
+            buttonText: {
+                today: '本月',
+                month: '月',
+                week: '周',
+                day: '日',
+                prev: '上一月',
+                next: '下一月'
+            },
+            defaultDate: new Date().toLocaleDateString(),
+            lang: 'zh-cn'
+            // ,
+            // navLinks: true, // can click day/week names to navigate views
+            // selectable: true,
+            // selectHelper: true,
+            // select: function(start, end) {
+            //     return;
+            //     var title = prompt('填写你的记录的:');
+            //     var eventData;
+            //     if (title) {
+            //         eventData = {
+            //             title: title,
+            //             start: start,
+            //             end: end
+            //         };
+            //         $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+            //     }
+            //     $('#calendar').fullCalendar('unselect');
+            //
+            //
+            //
+            // },
+            // editable: false,
+            // eventLimit: true  // allow "more" link when too many events
+        });
+
+    });
+</script>
+<script>
+    //    开启本地储存
+    var state = window.localStorage;
+    var id = state.getItem("id");
+    var user = state.getItem("name");
+    var role = state.getItem("role");
+    if (user != null && user.toString().length !== 0 && role != null && role.toString().length !== 0) {
+        var welcome = document.getElementById("welcome");
+        role = role.toUpperCase();
+        welcome.innerHTML += "<span style=\"color: darkseagreen; \">  " + role + "</span>" + "," + user;
+    }
+
+</script>
+
+
 </body>
+
 </html>
